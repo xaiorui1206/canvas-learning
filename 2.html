@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		canvas {
+			border:1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="600" height="400" id="cas"></canvas>
+</body>
+<script>
+	var cas = document.getElementById( 'cas' );
+
+	var ctx = cas.getContext( '2d' );
+	
+	ctx.fillStyle = 'blue';
+
+	var a = -90;
+	var intervalId = setInterval( function () {
+
+		a+=10;
+
+		if ( a > 270 ) {
+			clearInterval( intervalId );
+			alert( '绘制完成' );
+			a = 270;
+		}
+
+		ctx.moveTo( cas.width / 2, cas.height / 2 );
+		ctx.arc( cas.width / 2, cas.height / 2, 100, 
+					-Math.PI / 2, 
+					a * Math.PI / 180
+				);
+
+		ctx.fill();
+
+	}, 20 );
+
+
+</script>
+</html>
